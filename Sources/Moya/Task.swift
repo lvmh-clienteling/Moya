@@ -1,4 +1,5 @@
 import Foundation
+import Alamofire
 
 /// Represents an HTTP task.
 public enum Task {
@@ -19,7 +20,7 @@ public enum Task {
     case requestParameters(parameters: [String: Any], encoding: ParameterEncoding)
 
     /// A requests body set with data, combined with url parameters.
-    case requestCompositeData(bodyData: Data, urlParameters: [String: Any])
+    case requestCompositeData(bodyData: Data, urlParameters: [String: Any], parameterEncoding: ParameterEncoding = URLEncoding(destination: .queryString))
 
     /// A requests body set with encoded parameters combined with url parameters.
     case requestCompositeParameters(bodyParameters: [String: Any], bodyEncoding: ParameterEncoding, urlParameters: [String: Any])
